@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 // const data = require("./data.json");
 
 const authRoute = require('./routes/auth');
@@ -14,12 +15,12 @@ mongoose.connect(process.env.DB_CONNECT,
     
     
 //Middleware
-app.use(express.json());    
-app.use('/api/user', authRoute);
-    
+app.use(cors());
+app.use(express.json()); 
+app.use('/', authRoute);
 
 
-app.listen(3000, function () {
+app.listen(3333, function () {
     console.log('Server is running')
 });
 

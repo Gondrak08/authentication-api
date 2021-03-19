@@ -45,6 +45,16 @@ router.post('/login', async(req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.header('auth-token', token).send(token);
     // res.send('You are in!')
+
+    return Promise.reject('Oops!').catch(err => {
+        throw new Error(err);
+    })
+    
+
+})
+
+router.get('/login', async (req, res) => {
+    res.send('post')
 })
 
 
